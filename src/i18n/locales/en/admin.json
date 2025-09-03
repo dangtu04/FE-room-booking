@@ -1,0 +1,24 @@
+{
+    "menu": {
+        "admin": "ADMIN",
+        "logout": "Logout",
+         "dashboard": "Dashboard",
+         "user": "User",
+         "user-list": "User List",
+         "user-add": "Add User",
+         "user-edit": "Edit User"
+    },
+    "id": "Id",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "role": "Role",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "date-of-birth": "Date of Birth",
+    "gender": "Gender",
+    "password": "Password",
+    "add-user": "Add User"
+
+}

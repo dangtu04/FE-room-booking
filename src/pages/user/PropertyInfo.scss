@@ -1,0 +1,66 @@
+.property-info-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  .property-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #2c3e50;
+  }
+
+  .property-basic-info {
+    font-size: 16px;
+    line-height: 1.6;
+
+    p {
+      margin: 8px 0;
+    }
+
+    .property-description {
+      font-style: italic;
+      color: #555;
+    }
+  }
+
+  .property-image-gallery {
+    margin-top: 24px;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #34495e;
+    }
+
+    div {
+      background: #f6f6f6;
+      padding: 12px;
+      border-radius: 8px;
+      color: #888;
+      text-align: center;
+    }
+  }
+
+  .property-html-content {
+    margin-top: 32px;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #34495e;
+    }
+
+    div {
+      padding: 16px;
+      background-color: #fafafa;
+      border-left: 4px solid #3498db;
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+  }
+}

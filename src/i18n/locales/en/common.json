@@ -1,0 +1,17 @@
+{
+  "welcome": "Welcome",
+  "language": "Language",
+  "home": "Home",
+  "account": "Account",
+  "login": "Login",
+  "logout": "Logout",
+  "selectLanguage": "Select Language",
+  "english": "English",
+  "vietnamese": "Vietnamese",
+  "check-in-date": "Check in date",
+  "check-out-date": "Check out date",
+  "placeholder-province": "Where do you want to go?",
+  "people" :"People",
+  "room": "Room",
+  "rooms": "Rooms"
+}

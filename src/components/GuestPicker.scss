@@ -1,0 +1,46 @@
+.guest-picker-content {
+  width: 250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .choose-qty {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    gap: 8px;
+
+    label {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      // gap: 12px;
+
+      button {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0;
+      }
+
+      span {
+        width: 40px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .done-btn {
+    width: 100%;
+    font-weight: 600;
+    border-radius: 6px;
+  }
+}

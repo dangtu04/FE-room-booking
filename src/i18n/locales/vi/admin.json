@@ -1,0 +1,23 @@
+{
+    "menu": {
+        "admin": "QUẢN TRỊ",
+        "logout": "Đăng xuất",
+         "dashboard": "Bảng điều khiển",
+         "user": "Người dùng",
+         "user-list": "Danh sách người dùng",
+         "user-add": "Thêm người dùng",
+         "user-edit": "Sửa người dùng"
+    },
+    "id": "Mã",
+    "name": "Họ và tên",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "role": "Vai trò",
+    "actions": "Hành động",
+    "edit": "Sửa",
+    "delete": "Xoá",
+    "date-of-birth": "Ngày sinh",
+    "gender": "Giới tính",
+    "password": "Mật khẩu",
+    "add-user": "Thêm người dùng"
+}

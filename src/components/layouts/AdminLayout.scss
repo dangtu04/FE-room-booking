@@ -1,0 +1,31 @@
+.header {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .language-selector {
+    .language-item {
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      &.active {
+        color: #1677ff;
+      }
+    }
+    .language-item:hover {
+      color: #696969;
+    }
+  }
+}
+.action-edit {
+  color: #1890ff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.action-delete {
+  color: #ff4618;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+}

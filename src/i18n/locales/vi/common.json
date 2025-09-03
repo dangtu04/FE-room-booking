@@ -1,0 +1,17 @@
+{
+  "welcome": "Chào mừng bạn",
+  "language": "Ngôn ngữ",
+  "home": "Trang chủ",
+  "account": "Tài khoản",
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "selectLanguage": "Chọn ngôn ngữ",
+  "english": "Tiếng Anh",
+  "vietnamese": "Tiếng Việt",
+  "check-in-date": "Ngày nhận",
+  "check-out-date": "Ngày trả",
+  "placeholder-province": "Bạn muốn đến đâu?",
+  "people" :"Người",
+  "room": "Phòng",
+  "rooms": "Phòng"
+}
