@@ -35,6 +35,14 @@ export const deleteImageByTargetId = (targetId) => {
   });
 };
 
+export const deleteImageById = (id) => {
+  return axios.delete("/v1/api/delete-image-by-id", {
+    data: {
+      id: id,
+    },
+  });
+};
+
 export const getOutstandingLocation = () => {
   return axios.get("/v1/api/get-out-standing-location");
 };

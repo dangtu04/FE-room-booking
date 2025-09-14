@@ -8,10 +8,12 @@ import {
 import { Menu } from "antd";
 import { useTranslation } from "react-i18next";
 import "./HomeMenu.scss";
+import { useNavigate } from "react-router-dom";
 
 const HomeMenu = () => {
   const { t } = useTranslation("common");
   const [current, setCurrent] = useState("home");
+  const navigate = useNavigate();
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
@@ -19,7 +21,7 @@ const HomeMenu = () => {
 
   const items = [
     {
-      label: <span>{t("home")}</span>,
+      label: <span onClick={() => navigate("/")}>{t("home")}</span>,
       key: "home",
       icon: <HomeOutlined />,
     },

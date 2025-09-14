@@ -11,21 +11,33 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const RoomTypeManage = () => {
-  const [selectedPropertyId, setSelectedPropertyId] = useState(null);
+  const propertyId = useSelector((state) => state.user.propertyId);
+  const [selectedPropertyId, setSelectedPropertyId] = useState(
+    propertyId || null
+  );
 
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.property.properties);
   const listRoomType = useSelector((state) => state.room.listRoomType);
   const language = useSelector((state) => state.app.language);
+
+  // console.log("propertyId", propertyId);
   const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchProperties());
   }, []);
-
+  useEffect(() => {
+    // Nếu đã có propertyId thì set luôn, không cần đợi chọn
+    if (propertyId) {
+      setSelectedPropertyId(propertyId);
+    }
+  }, [propertyId]);
   useEffect(() => {
     if (selectedPropertyId) {
       dispatch(fetchListRoomType(selectedPropertyId));
     }
+    console.log("selectedPropertyId", selectedPropertyId);
   }, [selectedPropertyId]);
 
   const buildDataListProperties = (data) => {
@@ -87,32 +99,53 @@ const RoomTypeManage = () => {
           <a
             className="action-edit"
             onClick={() => {
-              navigate("/system/roomtype/edit", {
-                state: { roomType: record },
-              });
+              if (propertyId) {
+                navigate("/owner/roomtype/edit", {
+                  state: { roomType: record },
+                });
+              } else {
+                navigate("/system/roomtype/edit", {
+                  state: { roomType: record },
+                });
+              }
             }}
           >
             <EditOutlined /> Sửa
           </a>
-          <a
+          {/* <a
             className="action-edit"
             onClick={() => {
-              navigate("/system/amenity", {
-                state: {
-                  roomTypeId: record.id,
-                  roomTypeData: record.roomTypeData,
-                },
-              });
+              if (propertyId) {
+                navigate("/owner/amenity", {
+                  state: {
+                    roomTypeId: record.id,
+                    roomTypeData: record.roomTypeData,
+                  },
+                });
+              } else {
+                navigate("/system/amenity", {
+                  state: {
+                    roomTypeId: record.id,
+                    roomTypeData: record.roomTypeData,
+                  },
+                });
+              }
             }}
           >
             <ScheduleOutlined /> Tiên ích
-          </a>
+          </a> */}
           <a
             className="action-edit"
             onClick={() => {
-              navigate("/system/roomunit/list", {
-                state: { roomTypeId: record.id },
-              });
+              if (propertyId) {
+                navigate("/owner/roomunit/list", {
+                  state: { roomTypeId: record.id },
+                });
+              } else {
+                navigate("/system/roomunit/list", {
+                  state: { roomTypeId: record.id },
+                });
+              }
             }}
           >
             <UnorderedListOutlined /> Danh sách phòng
@@ -125,7 +158,7 @@ const RoomTypeManage = () => {
   return (
     <>
       <h1 className="system-title">Quản lý loại phòng</h1>
-      <Select
+      {/* <Select
         style={{ width: "100%", marginBottom: 20 }}
         placeholder="Chọn cơ sở"
         showSearch
@@ -133,8 +166,19 @@ const RoomTypeManage = () => {
         value={selectedPropertyId}
         options={options}
         onChange={handleOnchangeSelectProperty}
-      />
+      /> */}
 
+      {!propertyId && (
+        <Select
+          style={{ width: "100%", marginBottom: 20 }}
+          placeholder="Chọn cơ sở"
+          showSearch
+          optionFilterProp="label"
+          value={selectedPropertyId}
+          options={options}
+          onChange={handleOnchangeSelectProperty}
+        />
+      )}
       <Table
         dataSource={listRoomType || []}
         columns={columns}

@@ -8,6 +8,7 @@ import { fetchRoomStatus } from "../../redux/slices/allcodeSlice";
 const CreateRoomUnit = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+    const propertyId = useSelector((state) => state.user.propertyId);
   const properties = useSelector((state) => state.property.properties);
   const language = useSelector((state) => state.app.language);
   const roomStatus = useSelector((state) => state.allcode.roomStatus);
@@ -18,6 +19,15 @@ const CreateRoomUnit = () => {
     dispatch(fetchProperties());
     dispatch(fetchRoomStatus());
   }, [dispatch]);
+
+
+    useEffect(() => {
+    // Nếu có propertyId thì set luôn selectedProperty
+    if (propertyId) {
+      setSelectedProperty(propertyId);
+    }
+  }, [propertyId]);
+
   const buildPropertyOptions = (data) =>
     data?.map((item) => ({ label: item.name, value: item.id })) || [];
 
@@ -42,7 +52,7 @@ const CreateRoomUnit = () => {
       message.success("Create room unit successfully");
       form.setFieldsValue({ roomNumber: undefined });
     } else {
-       message.error("Create room unit fail");
+      message.error("Create room unit fail");
     }
   };
 
@@ -50,19 +60,21 @@ const CreateRoomUnit = () => {
     <>
       <h1>CreateRoomUnit</h1>
       <Form layout="vertical" form={form} onFinish={handleSubmit}>
-        <Form.Item
-          label="Chọn cơ sở"
-          name="propertyId"
-          rules={[{ required: true, message: "Vui lòng chọn cơ sở!" }]}
-        >
-          <Select
-            options={buildPropertyOptions(properties)}
-            placeholder="Chọn cơ sở"
-            showSearch
-            optionFilterProp="label"
-            onChange={handleOnchangSelectProperty}
-          />
-        </Form.Item>
+         {!propertyId && (
+          <Form.Item
+            label="Chọn cơ sở"
+            name="propertyId"
+            rules={[{ required: true, message: "Vui lòng chọn cơ sở!" }]}
+          >
+            <Select
+              options={buildPropertyOptions(properties)}
+              placeholder="Chọn cơ sở"
+              showSearch
+              optionFilterProp="label"
+              onChange={handleOnchangSelectProperty}
+            />
+          </Form.Item>
+        )}
 
         <Form.Item
           label="Chọn kiểu phòng"

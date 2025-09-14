@@ -9,7 +9,7 @@ const RoomAmenityManage = () => {
   const nameEn = data?.roomTypeData?.valueEn;
   return (
     <>
-      <h1>RoomAmenityManage</h1>
+      <h1>RoomAmenityManages</h1>
       <h3>{language === "vi" ? nameVi : nameEn}</h3>
     </>
   );

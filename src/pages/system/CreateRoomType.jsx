@@ -8,6 +8,7 @@ import { createRoomType } from "../../utils/api";
 const CreateRoomType = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const propertyId = useSelector((state) => state.user.propertyId);
 
   const properties = useSelector((state) => state.property.properties);
   const roomTypes = useSelector((state) => state.allcode.roomTypes);
@@ -24,6 +25,7 @@ const CreateRoomType = () => {
   const handleSubmit = async (values) => {
     const dataToSend = {
       ...values,
+      propertyId: propertyId || values.propertyId,
       availableQuantity: values.totalQuantity,
     };
     const res = await createRoomType(dataToSend);
@@ -44,18 +46,20 @@ const CreateRoomType = () => {
         onFinish={handleSubmit}
         initialValues={{ availableQuantity: 0 }}
       >
-        <Form.Item
-          label="Chọn cơ sở"
-          name="propertyId"
-          rules={[{ required: true, message: "Vui lòng chọn cơ sở!" }]}
-        >
-          <Select
-            options={buildPropertyOptions(properties)}
-            placeholder="Chọn cơ sở"
-            showSearch
-            optionFilterProp="label"
-          />
-        </Form.Item>
+        {!propertyId && (
+          <Form.Item
+            label="Chọn cơ sở"
+            name="propertyId"
+            rules={[{ required: true, message: "Vui lòng chọn cơ sở!" }]}
+          >
+            <Select
+              options={buildPropertyOptions(properties)}
+              placeholder="Chọn cơ sở"
+              showSearch
+              optionFilterProp="label"
+            />
+          </Form.Item>
+        )}
 
         <Form.Item
           label="Loại phòng"

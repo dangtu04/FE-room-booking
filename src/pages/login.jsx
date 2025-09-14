@@ -14,12 +14,24 @@ const Login = () => {
 
   const onFinish = async (values) => {
     const resultAction = await dispatch(loginUser(values));
+    const role = resultAction.payload?.roleCode;
     if (loginUser.fulfilled.match(resultAction)) {
       notification.success({
         message: "LOGIN",
         description: "Success",
       });
-      navigate("/");
+      switch (role) {
+        case "R1":
+          navigate("/system"); // AdminLayout
+          break;
+        case "R2":
+          navigate("/owner"); // OwnerLayout
+          break;
+        case "R3":
+        default:
+          navigate("/");
+          break;
+      }
     } else {
       notification.error({
         message: "LOGIN",

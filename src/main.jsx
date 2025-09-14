@@ -28,6 +28,14 @@ import SearchResult from "./pages/user/SearchResult.jsx";
 import PropertyDetail from "./pages/user/PropertyDetail.jsx";
 import RoomAmenityManage from "./pages/system/RoomAmenityManage.jsx";
 import BookingInfo from "./pages/user/BookingInfo.jsx";
+import VerifyEmail from "./pages/user/VerifyEmail.jsx";
+import AddImagesProperty from "./pages/system/AddImagesProperty.jsx";
+import PropertyAmenityManage from "./pages/system/PropertyAmenityManage.jsx";
+import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.js";
+import BookingManage from "./pages/system/BookingManage.jsx";
+import OwnerRevenue from "./pages/system/OwnerRevenue.jsx";
+import AdminRevenue from "./pages/system/AdminRevenue.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,9 +57,13 @@ const router = createBrowserRouter([
         path: "/property",
         element: <PropertyDetail />,
       },
-       {
+      {
         path: "/booking-info",
         element: <BookingInfo />,
+      },
+      {
+        path: "/verify-email",
+        element: <VerifyEmail />,
       },
     ],
   },
@@ -59,7 +71,9 @@ const router = createBrowserRouter([
     path: "/system",
     element: (
       <AuthProvider>
-        <AdminLayout />
+        <ProtectedRoute allowedRoles={["R1"]}>
+          <AdminLayout />
+        </ProtectedRoute>
       </AuthProvider>
     ),
     children: [
@@ -116,9 +130,120 @@ const router = createBrowserRouter([
         element: <AddImageProvince />,
       },
       {
+        path: "image/property",
+        element: <AddImagesProperty />,
+      },
+      {
         path: "amenity",
         element: <RoomAmenityManage />,
       },
+      {
+        path: "amenity/property",
+        element: <PropertyAmenityManage />,
+      },
+      {
+        path: "booking/manage",
+        element: <BookingManage />,
+      },
+      {
+        path: "revenue",
+        element: <AdminRevenue />,
+      },
+    ],
+  },
+  {
+    path: "/owner",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute allowedRoles={["R2"]}>
+          <OwnerLayout />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+    // children: [
+
+    //   {
+    //     path: "roomtype/list",
+    //     element: <RoomTypeManage />,
+    //   },
+    //   {
+    //     path: "roomtype/create",
+    //     element: <CreateRoomType />,
+    //   },
+    //   {
+    //     path: "roomunit/create",
+    //     element: <CreateRoomUnit />,
+    //   },
+    //   {
+    //     path: "roomtype/edit",
+    //     element: <EditRoomType />,
+    //   },
+    //   {
+    //     path: "roomunit/list",
+    //     element: <RoomUnitManage />,
+    //   },
+    //   {
+    //     path: "image/property",
+    //     element: <AddImagesProperty />,
+    //   },
+    //   {
+    //     path: "amenity",
+    //     element: <RoomAmenityManage />,
+    //   },
+    //   {
+    //     path: "amenity/property",
+    //     element: <PropertyAmenityManage />,
+    //   },
+    // ],
+        children: [
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+    
+
+
+      {
+        path: "property/edit",
+        element: <EditProperty />,
+      },
+      {
+        path: "roomtype/list",
+        element: <RoomTypeManage />,
+      },
+      {
+        path: "roomtype/create",
+        element: <CreateRoomType />,
+      },
+      {
+        path: "roomunit/create",
+        element: <CreateRoomUnit />,
+      },
+      {
+        path: "roomtype/edit",
+        element: <EditRoomType />,
+      },
+      {
+        path: "roomunit/list",
+        element: <RoomUnitManage />,
+      },
+
+      {
+        path: "image/property",
+        element: <AddImagesProperty />,
+      },
+      {
+        path: "revenue",
+        element: <OwnerRevenue />,
+      },
+      {
+        path: "amenity/property",
+        element: <PropertyAmenityManage />,
+      },
+        {
+        path: "booking/manage",
+        element: <BookingManage />,
+      }
     ],
   },
   {

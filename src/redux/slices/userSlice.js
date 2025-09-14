@@ -26,6 +26,7 @@ const initialState = {
   email: null,
   fullName: null,
   roleCode: null,
+  propertyId: null,
   isAuthenticated: false,
   status: "idle",
   error: null,
@@ -40,6 +41,7 @@ const userSlice = createSlice({
       state.email = null;
       state.fullName = null;
       state.roleCode = null;
+      state.propertyId = null;
       state.isAuthenticated = false;
       state.status = "idle";
       state.error = null;
@@ -47,11 +49,12 @@ const userSlice = createSlice({
       localStorage.removeItem("access_token");
     },
     restoreUser(state, action) {
-      const { token, email, fullName, roleCode } = action.payload;
+      const { token, email, fullName, roleCode, propertyId } = action.payload;
       state.token = token;
       state.email = email;
       state.fullName = fullName;
       state.roleCode = roleCode;
+      state.propertyId = propertyId;
       state.isAuthenticated = true;
     },
   },
@@ -73,10 +76,7 @@ const userSlice = createSlice({
 
         // lưu vào localStorage
         localStorage.setItem("access_token", token);
-        localStorage.setItem(
-          "user_data",
-          JSON.stringify({ email, fullName, roleCode })
-        );
+        localStorage.setItem("user_data", JSON.stringify({ email, fullName }));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";

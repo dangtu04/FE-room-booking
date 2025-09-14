@@ -113,7 +113,7 @@ const AddImageProvince = () => {
       const delRes = await deleteImageByTargetId(values.provinceId);
       // console.log("Delete response:", delRes);
       if (delRes && delRes.errCode === 0) {
-        // Sau khi xóa thành công thì thêm ảnh mới
+
         const formData = new FormData();
         formData.append("type", "PROVINCE");
         formData.append("targetId", values.provinceId);
@@ -133,7 +133,6 @@ const AddImageProvince = () => {
         message.error("Xóa ảnh cũ thất bại.");
       }
     }
-    // ...existing code...
   };
 
   useEffect(() => {

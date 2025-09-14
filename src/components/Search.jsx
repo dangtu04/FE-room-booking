@@ -20,12 +20,13 @@ import GuestPicker from "./GuestPicker";
 import LocationSelect from "./LocationSelect";
 import DateRangePicker from "./DateRangePicker";
 import { setSearchInfo } from "../redux/slices/searchSlice";
+import { useNavigate } from "react-router-dom";
 const Search = () => {
   const language = useSelector((state) => state.app.language);
   const [openGuestPicker, setOpenGuestPicker] = useState(false);
   const { t } = useTranslation("common");
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const {
     location: savedLocation,
     checkIn: savedCheckIn,
@@ -87,6 +88,7 @@ const Search = () => {
       checkIn && checkOut ? dayjs(checkOut).diff(dayjs(checkIn), "day") : 1;
 
     localStorage.setItem("stayDays", nights > 1 ? nights : 1);
+    navigate(`/search?provinceCode=${selectedLocation}`);
   };
 
   return (
@@ -139,4 +141,4 @@ const Search = () => {
   );
 };
 export default Search;
-// Note: làm lưu thông tin search và redux, onclick nhận được object input để làm tìm kiếm
+

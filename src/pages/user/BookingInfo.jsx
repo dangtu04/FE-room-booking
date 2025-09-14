@@ -6,48 +6,101 @@ import {
   Form,
   Input,
   Button,
-  DatePicker,
-  Select,
-  Checkbox,
   Typography,
-  Tag,
-  Space,
-  Rate,
+  message,
 } from "antd";
 import {
-  WifiOutlined,
-  CarOutlined,
-  EnvironmentOutlined,
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import "./BookingInfo.scss";
 import HotelInfoCard from "./HotelInfoCard";
-import { useLocation } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { createBooking, getPropertyById } from "../../utils/api";
 
 const { Title, Text } = Typography;
-// const { Option } = Select;
-// const { RangePicker } = DatePicker;
 
 const BookingInfo = () => {
   const [form] = Form.useForm();
 
   const location = useLocation();
   const { bookingInfo, propertyId } = location.state || {};
+  const guestCount = useSelector((state) => state.search.guestCount);
+  const language = useSelector((state) => state.app.language);
+  const [property, setProperty] = useState({});
+  const navigate = useNavigate();
 
+  const handleCreateBooking = async (values) => {
+    const selectedQuantities = bookingInfo?.selectedQuantities || {};
 
+    // mapping sang bookingItems
+    const bookingItems = Object.entries(selectedQuantities).map(
+      ([roomTypeId, quantity]) => ({
+        roomTypeId: Number(roomTypeId),
+        quantity,
+      })
+    );
 
+    // tính tổng numRooms = sum(quantity)
+    const numRooms = Object.values(selectedQuantities).reduce(
+      (total, q) => total + q,
+      0
+    );
 
-  const onFinish = (values) => {
-    console.log("Form values:", values);
+    const data = {
+      userName: values.lastName,
+      userEmail: values.email,
+      userPhone: values.phone,
+      totalPrice: bookingInfo?.totalBookingPrice,
+      checkInDate: bookingInfo?.checkIn,
+      checkOutDate: bookingInfo?.checkOut,
+      numPeople: guestCount,
+      numRooms,
+      bookingItems,      
+      language,
+      propertyName: property?.name || "",
+      propertyAddress: property?.address || "",
+      checkInTimeData: property?.checkInTimeData || {},
+      checkOutTimeData: property?.checkOutTimeData || {},
+      typeData: property?.typeData || {},
+      propertyId: propertyId,
+    };
+
+    const res = await createBooking(data);
+    if (res && res.errCode === 0) {
+      message.success("Đặt phòng thành công!");
+      navigate("/");
+    } else {
+      message.error("Đặt phòng thất bại. Vui lòng thử lại.");
+      console.log("Booking error response:", res);
+    }
   };
+
+
+  useEffect(() => {
+    const fetchPropertyById = async (propertyId) => {
+      const res = await getPropertyById(propertyId);
+      setProperty(res.data);
+      if (res && res.errCode === 0 && res.data) {
+        setProperty(res.data);
+      }
+    };
+
+    if (propertyId) {
+      fetchPropertyById(propertyId);
+    }
+  }, [propertyId]);
+
+  // useEffect(() => {
+  //   console.log("Check property : ", property);
+  // }, [property]);
 
   return (
     <div className="hotel-booking">
       <Row gutter={24}>
         {/* Hotel Information */}
         <Col xs={24} lg={11}>
-          <HotelInfoCard bookingInfo={bookingInfo} propertyId={propertyId} />
+          <HotelInfoCard bookingInfo={bookingInfo} property={property} />
         </Col>
 
         {/* Booking Form */}
@@ -67,7 +120,7 @@ const BookingInfo = () => {
             <Form
               form={form}
               layout="vertical"
-              onFinish={onFinish}
+              onFinish={handleCreateBooking}
               className="booking-form"
             >
               <Form.Item
@@ -107,7 +160,7 @@ const BookingInfo = () => {
 
               <Form.Item>
                 <Button type="primary" htmlType="submit" size="large" block>
-                  Tiếp tục đặt phòng
+                  Đặt phòng
                 </Button>
               </Form.Item>
             </Form>

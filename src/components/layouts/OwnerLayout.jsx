@@ -8,8 +8,8 @@ import {
   ApartmentOutlined,
   PictureOutlined,
   ProductOutlined,
-  CarryOutOutlined,
   DollarOutlined,
+  CarryOutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import { Outlet, useNavigate, useLocation, Navigate } from "react-router-dom";
@@ -22,7 +22,7 @@ import { useTranslation } from "react-i18next";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminLayout = () => {
+const OwnerLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,7 +44,7 @@ const AdminLayout = () => {
       dispatch(logout());
       navigate("/login");
     } else {
-      navigate(`/system/${key}`);
+      navigate(`/owner/${key}`);
     }
   };
 
@@ -59,36 +59,7 @@ const AdminLayout = () => {
       icon: <DashboardOutlined />,
       label: t("menu.dashboard"),
     },
-    {
-      key: "user",
-      icon: <UserOutlined />,
-      label: t("menu.user"),
-      children: [
-        {
-          key: "user/list",
-          label: t("menu.user-list"),
-        },
-        {
-          key: "user/create",
-          label: t("menu.user-add"),
-        },
-      ],
-    },
-    {
-      key: "property",
-      icon: <ApartmentOutlined />,
-      label: "Quản lý cơ sở",
-      children: [
-        {
-          key: "property/list",
-          label: "Danh sách cơ sở",
-        },
-        {
-          key: "property/create",
-          label: "Thêm cơ sở",
-        },
-      ],
-    },
+
     {
       key: "roomtype",
       icon: <BranchesOutlined />,
@@ -114,10 +85,6 @@ const AdminLayout = () => {
       label: "Hình ảnh",
       children: [
         {
-          key: "image/province",
-          label: "Hình ảnh địa điểm",
-        },
-        {
           key: "image/property",
           label: "Hình ảnh cơ sở",
         },
@@ -134,7 +101,6 @@ const AdminLayout = () => {
         },
       ],
     },
-
     {
       key: "booking",
       icon: <CarryOutOutlined />,
@@ -151,6 +117,7 @@ const AdminLayout = () => {
       icon: <DollarOutlined />,
       label: "Doanh thu",
     },
+
     {
       key: "logout",
       icon: <PoweroffOutlined />,
@@ -178,7 +145,7 @@ const AdminLayout = () => {
             fontSize: 16,
           }}
         >
-          {collapsed ? "A" : t("menu.admin")}
+          {collapsed ? "O" : "Owner"}
         </div>
         <Menu
           theme="dark"
@@ -219,11 +186,11 @@ const AdminLayout = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Admin Dashboard ©{new Date().getFullYear()} Created by You
+          Owner Dashboard ©{new Date().getFullYear()} Created by You
         </Footer>
       </Layout>
     </Layout>
   );
 };
 
-export default AdminLayout;
+export default OwnerLayout;

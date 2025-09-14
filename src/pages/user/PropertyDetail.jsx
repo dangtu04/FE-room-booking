@@ -4,10 +4,6 @@ import ListRoomType from "./ListRoomType";
 import "./PropertyDetail.scss";
 import PropertyInfo from "./PropertyInfo";
 
-
-
-
-
 const PropertyDetail = () => {
   const [propertyParams] = useSearchParams();
   const propertyId = propertyParams.get("propertyId");
@@ -24,12 +20,7 @@ const PropertyDetail = () => {
     {
       key: "propertyInfo",
       label: "Thông tin",
-      children: <PropertyInfo propertyId={propertyId}/>,
-    },
-    {
-      key: "3",
-      label: "Tiện ích",
-      children: "Content of Tab Pane 3",
+      children: <PropertyInfo propertyId={propertyId} />,
     },
   ];
   return (

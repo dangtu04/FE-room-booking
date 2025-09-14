@@ -28,7 +28,9 @@ const AuthProvider = ({ children }) => {
           return;
         } else {
           const user = JSON.parse(userData);
-          dispatch(restoreUser({ token, ...user }));
+          const roleCode = decodedToken.roleCode;
+            const propertyId = decodedToken.propertyId;
+          dispatch(restoreUser({ token, ...user, roleCode, propertyId }));
         }
       } catch (e) {
         dispatch(logout());

@@ -15,3 +15,15 @@ export const createProperty = (data) => {
 export const editProperty = (data) => {
   return axios.put("/v1/api/edit-property", data);
 };
+
+export const getImagesProperty = (targetId) => {
+  return axios.get(`/v1/api/get-images-property?targetId=${targetId}`);
+};
+
+export const savePropertyAmenity = (data) => {
+  return axios.post("/v1/api/save-property-amenity", data);
+};
+
+export const getPropertyAmenitiesByPropertyId = (propertyId) => {
+  return axios.get(`/v1/api/get-property-amenity-by-property-id?propertyId=${propertyId}`);
+};

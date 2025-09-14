@@ -24,44 +24,32 @@ import BookingSummary from "./BookingSummary";
 import { useSelector } from "react-redux";
 import { getPropertyById } from "../../utils/api";
 import { useEffect, useState } from "react";
-const HotelInfoCard = ({ bookingInfo, propertyId }) => {
+const HotelInfoCard = ({ bookingInfo, property }) => {
   const language = useSelector((state) => state.app.language);
-    const stayDays = useSelector((state) => state.search.stayDays);
-  const [property, setProperty] = useState({});
-  useEffect(() => {
-    const fetchPropertyById = async (propertyId) => {
-      const res = await getPropertyById(propertyId);
-      setProperty(res.data);
-      console.log("Check res property by id: ", res);
-      if (res && res.errCode === 0 && res.data) {
-        setProperty(res.data);
-      }
-    };
+  const stayDays = useSelector((state) => state.search.stayDays);
 
-    if (propertyId) {
-      fetchPropertyById(propertyId);
-    }
-  }, [propertyId]);
+  if (!property) return null;
 
   return (
     <>
       <Card className="hotel-info-card">
         <div className="hotel-image">
-          <img
-            src={property?.avatar}
-            alt="UK Hotel Dalat"
-          />
+          <img src={property?.avatar} alt="UK Hotel Dalat" />
         </div>
 
         <div className="hotel-details">
           <div className="hotel-rating">
-            <Text>{language === "vi" ? property?.typeData?.valueVi: property?.typeData?.valueEn}</Text>
+            <Text>
+              {language === "vi"
+                ? property?.typeData?.valueVi
+                : property?.typeData?.valueEn}
+            </Text>
             <Rate disabled defaultValue={2} />
             <Tag color="orange">Mới trên Booking.com</Tag>
           </div>
 
           <Title level={3} className="hotel-name">
-           {property?.name}
+            {property?.name}
           </Title>
 
           <div className="hotel-address">
@@ -97,10 +85,10 @@ const HotelInfoCard = ({ bookingInfo, propertyId }) => {
         <div className="booking-details">
           <Title level={4}>Chi tiết đặt phòng của bạn</Title>
 
-          <div className="stay-duration">
+          {/* <div className="stay-duration">
             <Text strong>Tổng thời gian lưu trú:</Text>
             <div>{stayDays || 1} đêm</div>
-          </div>
+          </div> */}
 
           {/* <div className="room-selection">
             <Text strong>Bạn đã chọn</Text>

@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
-import { getPropertyById } from "../../utils/api";
+import {
+  getAllCode,
+  getPropertyAmenitiesByPropertyId,
+  getPropertyById,
+} from "../../utils/api";
 import { useSelector } from "react-redux";
 import "./PropertyInfo.scss";
+import ImagesProperty from "./ImagesProperty";
 
 const PropertyInfo = ({ propertyId }) => {
   const [property, setProperty] = useState({});
   const language = useSelector((state) => state.app.language);
+  const [amenities, setAmenities] = useState([]);
+  const [propertyAmenities, setPropertyAmenities] = useState([]);
 
   useEffect(() => {
     const fetchPropertyById = async (propertyId) => {
@@ -20,41 +27,118 @@ const PropertyInfo = ({ propertyId }) => {
     }
   }, [propertyId]);
 
+  // fetch amenities từ propertyId
+  const fetchPropertyAmenitiesByPropertyId = async () => {
+    const res = await getPropertyAmenitiesByPropertyId(propertyId);
+    if (res && res.errCode === 0) {
+      // lưu array string ["WIFI", "POOL", ...]
+      setAmenities(res.data.map((item) => item.propertyAmenityCode));
+    }
+  };
+  // fetch PROPERTY_AMENITY từ allcode
+  useEffect(() => {
+    const fetchPropertyAmanity = async () => {
+      const res = await getAllCode("PROPERTY_AMENITY");
+      if (res && res.errCode === 0) {
+        console.log("res PROPERTY_AMENITY", res);
+        setPropertyAmenities(res.data);
+      }
+    };
+
+    fetchPropertyAmanity();
+  }, []);
+
+  useEffect(() => {
+    fetchPropertyAmenitiesByPropertyId();
+  }, [propertyId]);
+
+  const mappedAmenities = amenities.map((amenityCode) => {
+    const detail = propertyAmenities.find((a) => a.keyMap === amenityCode);
+    return {
+      valueEn: detail?.valueEn || "",
+      valueVi: detail?.valueVi || "",
+      key: amenityCode,
+    };
+  });
+
   return (
     <div className="property-info-container">
-      <h1 className="property-title">{property?.name}</h1>
+      {/* Header Section */}
+      <div className="property-header">
+        <div className="property-title-section">
+          <h2 className="property-title">{property?.name}</h2>
+          <div className="property-location">
+            <i className="fa-solid fa-location-dot"></i>
+            <span>{property?.address}</span>
+          </div>
+        </div>
 
-      <div className="property-basic-info">
-        <p className="property-description">{property?.description}</p>
-        <p><strong><i className="fa-solid fa-location-dot"></i> Address:</strong> {property?.address}</p>
-        <p>
-          <strong>🏠 Type:</strong>{" "}
-          {language === "vi"
-            ? property?.typeData?.valueVi
-            : property?.typeData?.valueEn}
-        </p>
-        {/* <p>
-          <strong>🕑 Check-in:</strong>{" "}
-          {language === "vi"
-            ? property?.checkInTimeData?.valueVi
-            : property?.checkInTimeData?.valueEn}
-        </p>
-        <p>
-          <strong>🕚 Check-out:</strong>{" "}
-          {language === "vi"
-            ? property?.checkOutTimeData?.valueVi
-            : property?.checkOutTimeData?.valueEn}
-        </p> */}
+        <div className="property-type-badge">
+          <span className="type-label">
+            {language === "vi"
+              ? property?.typeData?.valueVi
+              : property?.typeData?.valueEn}
+          </span>
+        </div>
       </div>
 
-      <div className="property-image-gallery">
-        <h2>🖼 Hình ảnh</h2>
-        <div>ở đây tôi sẽ đặt một component để call danh sách ảnh của cơ sở</div>
+      {/* Image Gallery Section */}
+      <div className="property-gallery-section">
+        <ImagesProperty propertyId={propertyId} />
       </div>
 
-      <div className="property-html-content">
-        <h2>📄 Thông tin chi tiết</h2>
-        <div dangerouslySetInnerHTML={{ __html: property.contentHTML }}></div>
+      {/* Content Grid */}
+      <div className="property-content-grid">
+        {/* Left Column - Description */}
+        <div className="property-main-content">
+          <div className="content-card">
+            <h2 className="section-title">Thông tin chi tiết</h2>
+            <div
+              className="property-html-content"
+              dangerouslySetInnerHTML={{ __html: property.contentHTML }}
+            />
+          </div>
+        </div>
+
+        {/* Right Column - Quick Info (có thể thêm sau) */}
+        <div className="property-sidebar">
+          <div className="quick-info-card">
+            <h3 className="card-title">Tiện ích</h3>
+
+            {mappedAmenities && mappedAmenities.length > 0 ? (
+              <span>
+                {" "}
+                {mappedAmenities.map((amenity) => (
+                  <div className="info-item" key={amenity.key}>
+                    <span>
+                      {language === "vi" ? amenity.valueVi : amenity.valueEn}
+                    </span>
+                  </div>
+                  // <li key={amenity.key}>
+
+                  // </li>
+                ))}
+              </span>
+            ) : (
+              <p>Không có tiện ích</p>
+            )}
+          </div>
+
+          {/* <div className="quick-info-card">
+            <h3 className="card-title">Tiện ích</h3>
+            {mappedAmenities && mappedAmenities.length > 0 ? (
+              <ul className="amenities-list">
+                {mappedAmenities.map((amenity) => (
+                  <li key={amenity.key}>
+                    {language === "vi" ? amenity.valueVi : amenity.valueEn}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>Không có tiện ích</p>
+            )}
+          </div> */}
+        </div>
       </div>
     </div>
   );
