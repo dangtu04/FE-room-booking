@@ -1,0 +1,96 @@
+{
+  "welcome": "Chào mừng bạn",
+  "language": "Ngôn ngữ",
+  "home": "Trang chủ",
+  "account": "Tài khoản",
+  "login": "Đăng nhập",
+  "register": "Đăng ký",
+  "logout": "Đăng xuất",
+  "selectLanguage": "Chọn ngôn ngữ",
+  "english": "Tiếng Anh",
+  "vietnamese": "Tiếng Việt",
+  "check-in-date": "Ngày nhận",
+  "check-out-date": "Ngày trả",
+  "placeholder-province": "Bạn muốn đến đâu?",
+  "people" :"Người",
+  "room": "Phòng",
+  "rooms": "Phòng",
+  "contact": "Liên hệ",
+  "about": "Về chúng tôi",
+  "password": "Mật khẩu",
+  "enter_password": "Nhập mật khẩu của bạn",
+  "no_acc": "Chưa có tài khoản?",
+
+  "register_account": "Đăng ký tài khoản",
+  "full_name": "Họ và tên",
+  "phone_number": "Số điện thoại",
+  "enter_email": "Nhập email",
+  "enter_full_name": "Nhập họ tên",
+  "enter_phone_number": "Nhập số điện thoại",
+  "already_have_account": "Bạn đã có tài khoản?",
+  "suggested_locations": "Địa điểm gợi ý",
+
+  "search": "Tìm",
+  "adult" :"Người lớn",
+
+  "contact_form": {
+  "contact_us": "Liên hệ với chúng tôi",
+  "contact_description": "Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Hãy để lại tin nhắn và chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+  "quick_response": "Phản hồi nhanh chóng",
+  "within_24h": "Trong vòng 24 giờ",
+  "dedicated_support": "Hỗ trợ tận tình",
+  "professional_team": "Đội ngũ chuyên nghiệp",
+  "send_message": "Gửi tin nhắn",
+  "fill_information": "Điền thông tin bên dưới để liên hệ",
+  "your_email": "Email của bạn",
+  "your_message": "Tin nhắn",
+  "enter_your_message": "Nhập tin nhắn của bạn...",
+  "confidential_info": "Thông tin của bạn được bảo mật tuyệt đối"
+},
+"filter_by": "Chọn lọc theo",
+"clear_filter": "Xoá lọc",
+
+"room_type" :"Loại phòng",
+"information":"Thông tin",
+"ratings":"Đánh giá",
+"detail_info":"Thông tin chi tiết",
+"amenities": "Tiện nghi",
+
+"choose_your_room": "Chọn phòng của bạn",
+"apply": "Áp dụng",
+"guests": "Khách",
+"guest": "Khách",
+"price": "Giá",
+"available_rooms": "Phòng còn trống",
+"select_quantity": "Chọn số lượng",
+"checkin": "Nhận phòng",
+"checkout": "Trả phòng",
+"no_room_selected": "Chưa chọn phòng",
+"proceed_booking": "Tiến hành đặt phòng",
+"night": "Đêm",
+"total": "Tổng cộng",
+"evaluate" :"Đánh giá",
+"your_room_details":"Chi tiết phòng của bạn",
+
+
+"enter_your_details": "Nhập thông tin chi tiết của bạn",
+"almost_done": "Gần xong rồi! Chỉ cần điền phần thông tin * bắt buộc",
+"latin_notice": "Vui lòng nhập thông tin của bạn bằng ký tự Latin để chỗ nghỉ có thể hiểu được",
+
+"email_address": "Địa chỉ email",
+"booking_email_notice": "Email xác nhận đặt phòng sẽ được gửi đến địa chỉ này",
+
+"phone_notice": "Để xác minh đơn đặt và để chỗ nghỉ liên lạc khi cần",
+"booking": "Đặt phòng",
+
+"share_experience": "Chia sẻ trải nghiệm của bạn",
+"overall_rating": "Đánh giá tổng thể",
+"detailed_review": "Nhận xét chi tiết",
+"share_experience_description": "Chia sẻ trải nghiệm của bạn về dịch vụ, vị trí, tiện nghi, nhân viên... Những đánh giá chi tiết sẽ giúp ích cho những du khách khác.",
+"submit_review": "Gửi đánh giá",
+"submitting": "Đang gửi..."
+
+
+
+
+}

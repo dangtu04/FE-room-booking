@@ -1,0 +1,41 @@
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 24px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .header-left {
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1890ff;
+    }
+  }
+
+  .header-center {
+    flex: 1;
+    text-align: center;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .header-btn {
+      font-weight: 500;
+      color: #595959;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+    .user-fullname {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}

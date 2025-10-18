@@ -1,0 +1,68 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.register-card {
+  width: 400px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.register-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+
+  .ant-btn-link {
+    padding: 0;
+    font-weight: 500;
+    color: var(--ant-primary-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.register-title {
+  text-align: center;
+  margin-bottom: 24px !important;
+  color: var(--ant-primary-color);
+}
+
+.register-form {
+  .ant-form-item-label > label {
+    font-weight: 500;
+  }
+
+  .ant-input,
+  .ant-input-password {
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .ant-btn-primary {
+    border-radius: 8px;
+    font-weight: 500;
+  }
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 12px;
+
+  .register-link {
+    color: var(--ant-primary-color);
+    font-weight: 500;
+    margin-left: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.outstanding-location {
+  padding: 2rem;
+
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .grid {
+  display: grid;
+  gap: 1.5rem;
+
+  // 4 ảnh trên một hàng
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .label {
+      text-align: center;
+      padding: 0.75rem;
+      background-color: #f9f9f9;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+}

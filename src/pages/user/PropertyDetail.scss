@@ -1,0 +1,12 @@
+.property-detail-container {
+  display: flex;
+  // justify-content: center;
+  // align-items: flex-start;
+  min-height: 80vh;
+  padding: 5px 20px;
+
+  .ant-tabs {
+    width: 100%;
+    max-width: 1000px;
+  }
+}

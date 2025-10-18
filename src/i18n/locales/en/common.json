@@ -1,0 +1,101 @@
+{
+  "welcome": "Welcome",
+  "language": "Language",
+  "home": "Home",
+  "account": "Account",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "selectLanguage": "Select Language",
+  "english": "English",
+  "vietnamese": "Vietnamese",
+  "check-in-date": "Check in date",
+  "check-out-date": "Check out date",
+  "placeholder-province": "Where do you want to go?",
+  "people" :"People",
+  "room": "Room",
+  "rooms": "Rooms",
+  "contact": "Contact",
+  "about": "About",
+  "password": "Password",
+  "enter_password": "Enter your password",
+  "no_acc": "Don't have an account?",
+
+  "register_account": "Register Account",
+  "full_name": "Full Name",
+  "phone_number": "Phone Number",
+  "enter_email": "Enter Email",
+  "enter_full_name": "Enter Full Name",
+  "enter_phone_number": "Enter Phone Number",
+  "already_have_account": "Already have an account?",
+  "suggested_locations": "Suggested locations",
+
+  "search": "Search",
+  "adult" :"Adult",
+
+  "contact_form": {
+  "contact_us": "Contact Us",
+  "contact_description": "We are always ready to listen and support you. Leave a message and we will respond as soon as possible.",
+  "quick_response": "Quick Response",
+  "within_24h": "Within 24 Hours",
+  "dedicated_support": "Dedicated Support",
+  "professional_team": "Professional Team",
+  "send_message": "Send Message",
+  "fill_information": "Fill in the information below to contact us",
+  "your_email": "Your Email",
+  "your_message": "Message",
+  "enter_your_message": "Enter your message...",
+  "confidential_info": "Your information is kept strictly confidential"
+},
+
+"filter_by": "Select by",
+"clear_filter": "Clear filter",
+
+"room_type" :"Room type",
+"information":"Information",
+"ratings":"Ratings",
+"detail_info": "Detail information",
+"amenities" :"Amenities",
+
+"choose_your_room": "Choose Your Room",
+"apply": "Apply",
+
+"guests": "Guests",
+"guest": "Guest",
+"price": "Price",
+"available_rooms": "Available Rooms",
+"select_quantity": "Select Quantity",
+"checkin": "Check-in",
+"checkout": "Check-out",
+"no_room_selected": "No Room Selected",
+"proceed_booking": "Proceed to Booking",
+"night": "Night",
+"total": "Total",
+
+"evaluate" :"Evaluate",
+"your_room_details":"Your room details",
+
+"enter_your_details": "Enter your details",
+"almost_done": "Almost done! Just fill in the required * fields",
+"latin_notice": "Please enter your information in Latin characters so the property can understand it",
+
+"email_address": "Email Address",
+"booking_email_notice": "A booking confirmation email will be sent to this address",
+
+"phone_notice": "For booking verification and for the property to contact you if needed",
+"booking": "Booking",
+
+"share_experience": "Share Your Experience",
+"overall_rating": "Overall Rating",
+"detailed_review": "Detailed Review",
+"share_experience_description": "Share your experience about the service, location, amenities, staff... Detailed reviews will be helpful for other travelers.",
+"submit_review": "Submit Review",
+"submitting": "Submitting..."
+
+
+
+
+
+
+
+}
